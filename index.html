@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Narzędzia PF</title>
+<style>
+  :root{
+    --bg:#12181d; --panel:#1b232a; --panel2:#212b33; --line:#2c3841;
+    --ink:#e8edf1; --ink-dim:#8fa0ab; --amber:#e8a33d; --green:#4caf7d;
+    --red:#d9695f; --blue:#5b9bd5; --radius:10px;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Segoe UI',Roboto,Arial,sans-serif;
+    min-height:100vh; padding:24px 16px 40px;
+  }
+  .wrap{ max-width:480px; margin:0 auto; }
+  h1{ font-size:20px; font-weight:600; margin:8px 0 4px; }
+  .sub{ color:var(--ink-dim); font-size:13px; margin:0 0 24px; line-height:1.5; }
+  .card{
+    display:flex; align-items:center; gap:14px;
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:16px; margin-bottom:12px; text-decoration:none; color:var(--ink);
+  }
+  .card:active{ background:var(--panel2); }
+  .icon{
+    width:44px; height:44px; flex:0 0 44px; border-radius:10px;
+    background:var(--panel2); display:flex; align-items:center; justify-content:center;
+    font-size:22px;
+  }
+  .txt{ min-width:0; }
+  .name{ font-size:15.5px; font-weight:600; margin:0 0 2px; }
+  .desc{ font-size:12.5px; color:var(--ink-dim); margin:0; line-height:1.4; }
+  .arrow{ margin-left:auto; color:var(--ink-dim); font-size:18px; flex:0 0 auto; }
+
+  .card.muted{ opacity:.55; }
+  .card.muted .icon{ background:var(--panel); }
+  .note{
+    margin-top:32px; padding-top:16px; border-top:1px solid var(--line);
+    font-size:12px; color:var(--ink-dim); line-height:1.6;
+  }
+  .note b{ color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Narzędzia PF</h1>
+  <p class="sub">Jedno miejsce z odnośnikami do wszystkich narzędzi. Dodaj tę stronę
+    do ekranu początkowego telefonu — stąd wejdziesz do każdego z nich.</p>
+
+  <a class="card" href="https://heatcoolfulawkawro-ui.github.io/karta-godzin/">
+    <div class="icon">🕐</div>
+    <div class="txt">
+      <p class="name">Karta godzin</p>
+      <p class="desc">Ewidencja godzin pracy</p>
+    </div>
+    <div class="arrow">›</div>
+  </a>
+
+  <a class="card" href="https://heatcoolfulawkawro-ui.github.io/AGENT_JOHN/">
+    <div class="icon">❄️</div>
+    <div class="txt">
+      <p class="name">HVAC Notatki</p>
+      <p class="desc">Karta urządzeń, tabliczki znamionowe, czynnik/CRO</p>
+    </div>
+    <div class="arrow">›</div>
+  </a>
+
+  <a class="card" href="https://heatcoolfulawkawro-ui.github.io/pf-protokoly/">
+    <div class="icon">📋</div>
+    <div class="txt">
+      <p class="name">PF-Protokoły</p>
+      <p class="desc">Baza protokołów</p>
+    </div>
+    <div class="arrow">›</div>
+  </a>
+
+  <a class="card" href="https://heatcoolfulawkawro-ui.github.io/Paliwo-PF/">
+    <div class="icon">⛽</div>
+    <div class="txt">
+      <p class="name">Paliwo PF</p>
+      <p class="desc">Dziennik tankowań i kosztów samochodu</p>
+    </div>
+    <div class="arrow">›</div>
+  </a>
+
+  <a class="card" href="https://heatcoolfulawkawro-ui.github.io/Waga-PF/">
+    <div class="icon">⚖️</div>
+    <div class="txt">
+      <p class="name">Waga PF</p>
+      <p class="desc">Dziennik wagi i treningu</p>
+    </div>
+    <div class="arrow">›</div>
+  </a>
+
+  <div class="card muted">
+    <div class="icon">🧮</div>
+    <div class="txt">
+      <p class="name">Kalkulator RBH</p>
+      <p class="desc">Tylko lokalnie na komputerze — celowo bez internetu, patrz notatka niżej</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Kalkulator RBH</b> nie jest tu podlinkowany — działa lokalnie z pliku na
+    komputerze, bez internetu i bez publicznego hostingu, bo liczy wewnętrzne
+    stawki i marże firmy. Powiedz, jeśli mimo to ma się pojawić tutaj — trzeba
+    świadomie zdecydować, czy upublicznić repozytorium.
+  </div>
+</div>
+</body>
+</html>
