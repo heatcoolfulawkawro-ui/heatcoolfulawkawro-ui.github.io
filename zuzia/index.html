@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<script>
+// Skrót na ekranie głównym telefonu potrafi pokazywać zbuforowaną, starą
+// wersję tej strony (nowe/usunięte kafelki). Ten kod po cichu sprawdza w tle
+// prawdziwą wersję na serwerze (z pominięciem cache) i sam się przeładowuje,
+// jeśli wykryje nowszą — bez zakładania nowego skrótu za każdym razem.
+(function(){
+  try{
+    fetch(location.pathname, { method:'HEAD', cache:'no-store' }).then(function(res){
+      var v = res.headers.get('last-modified') || res.headers.get('etag');
+      if(!v) return;
+      var stored = localStorage.getItem('pf_hub_zuzia_page_version');
+      localStorage.setItem('pf_hub_zuzia_page_version', v);
+      if(stored && stored !== v) location.replace(location.pathname + '?v=' + Date.now());
+    }).catch(function(){});
+  }catch(e){}
+})();
+</script>
+<title>Narzędzia</title>
+<style>
+  :root{
+    --bg:#12181d; --panel:#1b232a; --panel2:#212b33; --line:#2c3841;
+    --ink:#e8edf1; --ink-dim:#8fa0ab; --amber:#e8a33d; --green:#4caf7d;
+    --red:#d9695f; --blue:#5b9bd5; --radius:10px;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Segoe UI',Roboto,Arial,sans-serif;
+    min-height:100vh; padding:24px 16px 40px;
+  }
+  .wrap{ max-width:480px; margin:0 auto; }
+  h1{ font-size:20px; font-weight:600; margin:8px 0 4px; }
+  .sub{ color:var(--ink-dim); font-size:13px; margin:0 0 24px; line-height:1.5; }
+  .card{
+    display:flex; align-items:center; gap:14px;
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:16px; margin-bottom:12px; text-decoration:none; color:var(--ink);
+  }
+  .card:active{ background:var(--panel2); }
+  .icon{
+    width:44px; height:44px; flex:0 0 44px; border-radius:10px;
+    background:var(--panel2); display:flex; align-items:center; justify-content:center;
+    font-size:22px;
+  }
+  .txt{ min-width:0; }
+  .name{ font-size:15.5px; font-weight:600; margin:0 0 2px; }
+  .desc{ font-size:12.5px; color:var(--ink-dim); margin:0; line-height:1.4; }
+  .arrow{ margin-left:auto; color:var(--ink-dim); font-size:18px; flex:0 0 auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Narzędzia</h1>
+  <p class="sub">Dodaj tę stronę do ekranu początkowego telefonu — stąd wejdziesz
+    do obu narzędzi.</p>
+
+  <a class="card" href="https://heatcoolfulawkawro-ui.github.io/wydatki-domowe/">
+    <div class="icon">🛍️</div>
+    <div class="txt">
+      <p class="name">Wydatki domowe</p>
+      <p class="desc">Paragony, zestawienia miesięczne i porównanie cen</p>
+    </div>
+    <div class="arrow">›</div>
+  </a>
+
+  <a class="card" href="https://heatcoolfulawkawro-ui.github.io/gotowka-pf/">
+    <div class="icon">💵</div>
+    <div class="txt">
+      <p class="name">Gotówka PF</p>
+      <p class="desc">Pula gotówki, pobrania i dopłaty</p>
+    </div>
+    <div class="arrow">›</div>
+  </a>
+</div>
+</body>
+</html>
