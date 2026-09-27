@@ -3,6 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<script>
+// Skrót na ekranie głównym telefonu potrafi pokazywać zbuforowaną, starą
+// wersję tej strony (nowe/usunięte kafelki). Ten kod po cichu sprawdza w tle
+// prawdziwą wersję na serwerze (z pominięciem cache) i sam się przeładowuje,
+// jeśli wykryje nowszą — bez zakładania nowego skrótu za każdym razem.
+(function(){
+  try{
+    fetch(location.pathname, { method:'HEAD', cache:'no-store' }).then(function(res){
+      var v = res.headers.get('last-modified') || res.headers.get('etag');
+      if(!v) return;
+      var stored = localStorage.getItem('pf_hub_page_version');
+      localStorage.setItem('pf_hub_page_version', v);
+      if(stored && stored !== v) location.replace(location.pathname + '?v=' + Date.now());
+    }).catch(function(){});
+  }catch(e){}
+})();
+</script>
 <title>Narzędzia PF</title>
 <style>
   :root{
